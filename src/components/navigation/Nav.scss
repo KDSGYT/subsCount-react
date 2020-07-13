@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+nav{
+    border:2px solid black;
+    ul{
+        list-style-type: none;
+        color:white;
+        background-color: black;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        
+        li{
+            margin: 0 5px;
+            padding: 15px;    
+            a{
+                text-decoration: none;
+                color:white;                
+            }
+            &:hover{
+                color:black;
+                background-color: white;
+                a{
+                    color:black;
+                }
+            }
+        }
+    }
+}

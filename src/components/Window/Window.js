@@ -8,13 +8,15 @@ class Window extends Component {
     state = {
         bannerUrl: '',
         channelImg: '',
-        subscriberCount: '',
-        viewCount: ''
+        viewCount: '',
+        title:'KDSG',
+        subscriberCount: 60
+
     }
 
 
     componentDidMount() {
-        this.getChannelId()
+        // this.getChannelId()
     }
 
 
