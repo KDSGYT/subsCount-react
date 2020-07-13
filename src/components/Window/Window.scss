@@ -1,0 +1,17 @@
+
+.sub-window {
+    margin: auto;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    .search {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        justify-content: center;
+        width: 600px;
+        height: 600px;
+    }
+}

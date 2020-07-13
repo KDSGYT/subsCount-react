@@ -1,11 +1,10 @@
 import React from 'react';
-import Input from './components/input/Input'
-import './App.scss';
+import Window from './components/Window/Window'
 
 function App() {
   return (
     <div className="App">
-      <Input />
+      <Window />
     </div>
   );
 }

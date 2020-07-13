@@ -1,36 +1,26 @@
-import React, { Component } from "react";
-import './input.scss'
-import Card from '../card/Card';
+import React from "react";
+import './input.scss';
 
-class Input extends Component {
-
-    fetchData = (e) =>{
-        e.preventDeault();
-    }
-
-    render() {
-        return (
-            <div className="sub-window">
-                <div className="search">
-                    <Card />
-                    <form className="input" onSubmit={this.fetchData}>
-                        <input
-                            htmlFor="channel-search"
-                            type="text"
-                            className="label-input"
-                            required
-                        />
-                        <label htmlFor="channel-search" className="label-name">
-                            <span className="content-name">
-                            Search
-                            </span>
-                        </label>
-                        <input type="submit" className="material-icons" value="search" />
-                    </form>
-                </div>
-            </div>
-        );
-    }
+// a stateful function 
+const Input = (props) => {
+    return (
+        
+        <form className="input" onSubmit={(e) => { e.preventDefault()
+            props.fetch()}}>
+            <input
+                htmlFor="channel-search"
+                type="text"
+                className="label-input"
+                required
+            />
+            <label htmlFor="channel-search" className="label-name">
+                <span className="content-name">
+                    Search
+                </span>
+            </label>
+            <input type="submit" className="material-icons" value="search" />
+        </form>
+    );
 }
 
-export default Input;
+export default Input
