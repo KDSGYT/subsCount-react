@@ -4,10 +4,8 @@
 $input-color: rgb(111, 164, 214);
 
 .input {
-    //   border:2px solid black;
-
     margin: auto;
-    width: 45vh;
+    width: 400px;
     height: 50px;
     overflow: hidden;
     position: relative;
@@ -60,7 +58,7 @@ $input-color: rgb(111, 164, 214);
         font-size: 2.3em;
         display: block;
         position: absolute;
-        right: 15px;
+        right: 3.5%;
         bottom: 5%;
         background-color: inherit;
         border: none;
@@ -76,7 +74,6 @@ $input-color: rgb(111, 164, 214);
     .label-input:focus+.label-name .content-name,
     .label-input:valid+.label-name .content-name {
         font-size: 0.5em;
-        // bottom:0;
         transform: translateY(-150%);
         color: $input-color;
     }
