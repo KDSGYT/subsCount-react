@@ -2,16 +2,14 @@
 .card{
     
     box-sizing: border-box;
-    width: 600px;
-    height:400px;
+    width: 100%;
+    height:67%;
     border:1px solid black;
     margin: auto;
     overflow: hidden;
     position: relative;
-    // border-radius: 0;
     border-radius: 10px;
     .card-top{
-        // width: 100%;
         height:38%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -23,11 +21,6 @@
             // height:100%;
             background-color: green;
         }
-
-        // img{
-        //     align-content: center;
-        //     height:100%;
-        // }
     }
     .bottom{
         display: flex;
@@ -36,7 +29,7 @@
         .card-circle{
             display: flex;
             position: absolute;
-            top: 20%;
+            top: 18%;
             margin: auto;
             background-color: red;
             border: 1px solid black;
@@ -52,19 +45,34 @@
         }
 
         .card-bottom{
-            margin-top:13%;
+            margin-top:11%;
             text-align: center;
-            // background-color: green;
             width: 100%;
-            height:80%;
+            height:70%;
+            h1{
+                margin: 4.5%;
+                // padding: 0;
+                // margin:0;
+            }
             .results{
-                margin-top:1%;
-                font-size: 3em;
+                margin-top:0%;
+                font-size: 2rem;
                 font-weight: normal;
                 width: 100%;
-                // background-color: yellow;
             }
         }
     }
 
+}
+
+@media screen and (min-width:720px){
+    .card{
+        .bottom{
+            .card-bottom{
+                .results{
+                    font-size: 3em;
+                }
+            }
+        }
+    }
 }

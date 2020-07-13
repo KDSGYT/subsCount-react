@@ -5,8 +5,10 @@ $input-color: rgb(111, 164, 214);
 
 .input {
     margin: auto;
-    width: 400px;
-    height: 50px;
+    width: 45vw;
+    min-width: 300px;
+    max-width: 400px;
+    height: 60px;
     overflow: hidden;
     position: relative;
     margin-top: 20px;
@@ -18,7 +20,7 @@ $input-color: rgb(111, 164, 214);
         width: 100%;
         border: none;
         box-sizing: border-box;
-        padding-top: 20px;
+        padding-top: 30px;
         outline: none;
         border-bottom: 2px solid rgb(78, 78, 78);
     }
@@ -58,7 +60,7 @@ $input-color: rgb(111, 164, 214);
         font-size: 2.3em;
         display: block;
         position: absolute;
-        right: 3.5%;
+        right: 0.1vw;
         bottom: 5%;
         background-color: inherit;
         border: none;
@@ -73,8 +75,10 @@ $input-color: rgb(111, 164, 214);
 
     .label-input:focus+.label-name .content-name,
     .label-input:valid+.label-name .content-name {
-        font-size: 0.5em;
+        font-size: 0.58em;
         transform: translateY(-150%);
         color: $input-color;
     }
 }
+
+
