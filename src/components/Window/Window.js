@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Provider } from '../context'
 import './Window.scss'
 import Card from '../card/Card';
 import Input from '../input/Input'
+
 
 class Window extends Component {
 
@@ -9,45 +11,45 @@ class Window extends Component {
         bannerUrl: '',
         channelImg: '',
         viewCount: '',
-        title:'KDSG',
-        subscriberCount: 60
-
+        title:'',
+        subscriberCount: 0
     }
 
 
     componentDidMount() {
-        // this.getChannelId()
+        this.getChannelId();
     }
 
-
-    async getChannelId(input = 'mkbhd') {
-        const api = "AIzaSyDl5bov83fBW37QXinJvn4bS9cf-czCNxY";
+    /**
+     * Retrieve the channel id using the keyword
+     * @param {string} input Input entered by the user
+     */
+    async getChannelId(input="MKBHD") {
+        const api = "AIzaSyC760IgRY6xKZo2J0o5gKjBDLws5l9enE0";
         let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&key=${api}`;
         await fetch(url)
-            .then((data) => data.json())
+            .then((data) => data.ok ? data.json() : new Error(`Didn't get the results`))
             .then((data) => {
-                try {
-                    return data.items[0].id.channelId;
-                } catch {
-                    // errorHandler(data);
-                }
+                return data.items[0].id.channelId;
             })
             .then(async (data) => {
-                console.log(data);
+                console.log(`channelId: ${data}`);
                 let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=${data}&key=${api}`;
-                await this.fetchData(url);
+                console.log("fetch function " + typeof this.fetchData)
+
+                await this.fetchData(url)
             })
-            .catch((err) => console.log(`get Channel${err}`));
+            .catch((err) => console.log(`Get Channelid Error:${err}`));
     }
 
+    /**
+     * Fetch channel stats using channel ID
+     * @param { String } url Url to fetch data from  
+     */
     async fetchData(url) {
-        // console.log(input);
         await fetch(url)
-            .then((data) => data.json())
+            .then((data) => data.ok ? data.json() : new Error(`Didn't get the channel subs`))
             .then((data) => {
-                try {
-                    console.log(data);
-
                     let item = data.items[0];
                     const thumbnails = item.snippet.thumbnails;
                     const banner = item.brandingSettings.image;
@@ -60,17 +62,16 @@ class Window extends Component {
                         subscriberCount: this.shortNumber(statistics.subscriberCount),
                         viewCount: this.shortNumber(statistics.viewCount)
                     })
-                    // generateHTML(item); set the state
-                } catch (err) {
-                    throw new Error(err.message);
-                }
             })
             .catch((err) => {
-                alert(err.message)
-                // console.error(err.message);
+                console.log(err.message)
             });
     }
 
+    /**
+     * Converts the number in to short form
+     * @param { number } labelValue Number you want to convert
+     */
     shortNumber(labelValue) {
         // Nine Zeroes for Billions
         return Math.abs(Number(labelValue)) >= 1.0e9
@@ -86,20 +87,16 @@ class Window extends Component {
 
     render() {
         return (
-            <div className="sub-window">
+            <Provider value={ this.state}>
+                <div className="sub-window">
                 <div className="search">
-                    <Card
-                        channelName={this.state.title}
-                        banner={this.state.bannerUrl}
-                        channelImg={this.state.channelImg}
-                        views={this.state.viewCount}
-                        subscribers={this.state.subscriberCount}
-                    />
+                    <Card />
                     <Input
-                        handleSubmit={this.getChannelId}
+                        handleSubmit={this.getChannelId.bind(this)}
                     />
                 </div>
             </div>
+            </Provider>
         );
     }
 }

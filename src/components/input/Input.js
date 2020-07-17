@@ -1,31 +1,21 @@
 import React, { Component } from "react";
 import './input.scss';
 
-// a stateful function 
 class Input extends Component  {
-    state = {
-        value:''
-    }
-    
-    handleChange(e){
-        console.log(e.target.value);
-        this.setState({value:e.target.value});
-    }
+    input = React.createRef();
 
     render(){
         return (
             <form 
                 className="input" 
                 onSubmit={ (e) => { e.preventDefault();
-                        this.props.handleSubmit()
-                        this.setState({value:''})
+                        this.props.handleSubmit(this.input.current.value)
                     }
                 }>
                 <input
+                    ref={this.input}
                     htmlFor="channel-search"
                     type="text"
-                    value={this.state.value}
-                    onChange={this.handleChange.bind(this)}
                     className="label-input"
                     required
                 />

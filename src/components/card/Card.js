@@ -1,26 +1,31 @@
 import React from 'react';
+import { Consumer } from '../context'
 import './card.scss'
 
-function Card(props) {
+export default function Card() {
 
     return (
-        <div className="card">
-            {/* <div className="card-top"><span ></span></div> */}
-            <div className="card-top" style={{ backgroundImage: `url(${props.banner})`}}></div>
-            <div className="bottom">
-                <div className="card-circle"><img src={props.channelImg} alt="Channel Profile"/></div>
-                <div className="card-bottom">
-                    <h1>{props.channelName}</h1>
-                    <div className="results">
-                        <div>{props.subscribers}</div>
+        <Consumer>
+            {({ bannerUrl, channelImg, title, subscriberCount }) => {
+                return (
+                    <div className="card">
+                        {/* <div className="card-top"><span ></span></div> */}
+                        <div className="card-top" style={{ backgroundImage: `url(${bannerUrl})` }}></div>
+                        <div className="bottom">
+                            <div className="card-circle"><img src={channelImg} alt="Channel Profile" /></div>
+                            <div className="card-bottom">
+                                <h1>{title || "no channel Name"}</h1>
+                                <div className="results">
+                                    <div>{subscriberCount}</div>
 
-                        {/* <span>Views</span> */}
+                                    {/* <span>Views</span> */}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    );
+                )
+            }}
+        </Consumer>
+    )
 
 }
-
-export default Card;
