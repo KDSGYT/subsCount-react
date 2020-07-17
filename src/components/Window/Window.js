@@ -25,7 +25,7 @@ class Window extends Component {
      * @param {string} input Input entered by the user
      */
     async getChannelId(input="MKBHD") {
-        const api = "AIzaSyC760IgRY6xKZo2J0o5gKjBDLws5l9enE0";
+        const api = "AIzaSyDvrIL-2-y7Q1gl2T0o0W78FvByXTnIHvM";
         let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&key=${api}`;
         await fetch(url)
             .then((data) => data.ok ? data.json() : new Error(`Didn't get the results`))
