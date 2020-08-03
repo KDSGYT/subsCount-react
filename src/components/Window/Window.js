@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Provider } from '../context'
 import './Window.scss'
 import Card from '../card/Card';
-import Input from '../input/Input'
+import Input from '../input/Input';
+import Error from '../error/Error';
 
 
 class Window extends Component {
@@ -12,7 +13,8 @@ class Window extends Component {
         channelImg: '',
         viewCount: '',
         title:'',
-        subscriberCount: 0
+        subscriberCount: 0,
+        error:false
     }
 
 
@@ -28,10 +30,16 @@ class Window extends Component {
         const api = "AIzaSyDvrIL-2-y7Q1gl2T0o0W78FvByXTnIHvM";
         let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${input}&key=${api}`;
         await fetch(url)
-            .then((data) => data.ok ? data.json() : new Error(`Didn't get the results`))
+            // .then(data => console.log(data))
             .then((data) => {
-                return data.items[0].id.channelId;
+                return data.status === 200 ? data.json() 
+                    : this.setState({
+                        error:{
+                            status: data.status  
+                        }
+                    })
             })
+            .then((data) => data.items[0].id.channelId )
             .then(async (data) => {
                 console.log(`channelId: ${data}`);
                 let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=${data}&key=${api}`;
@@ -39,7 +47,12 @@ class Window extends Component {
 
                 await this.fetchData(url)
             })
-            .catch((err) => console.log(`Get Channelid Error:${err}`));
+            .catch(err => console.log(err));
+            // .catch((err) => this.setState({
+                // error:{
+                    // status: err
+                // }
+            // }));
     }
 
     /**
@@ -86,18 +99,22 @@ class Window extends Component {
     }
 
     render() {
-        return (
-            <Provider value={ this.state}>
-                <div className="sub-window">
-                <div className="search">
-                    <Card />
-                    <Input
-                        handleSubmit={this.getChannelId.bind(this)}
-                    />
+        if(this.state.error){
+            return <Error status={this.state.error.status} />;
+        } else {
+            return (
+                <Provider value={ this.state}>
+                    <div className="sub-window">
+                    <div className="search">
+                        <Card />
+                        <Input
+                            handleSubmit={this.getChannelId.bind(this)}
+                        />
+                    </div>
                 </div>
-            </div>
-            </Provider>
-        );
+                </Provider>
+            );
+        }
     }
 }
 

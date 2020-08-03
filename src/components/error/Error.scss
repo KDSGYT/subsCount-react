@@ -1,0 +1,16 @@
+.error-page {
+    width: 100%;
+    height: 90vh;
+    .punchline{
+        display: flex;
+        height:90%;
+        flex-direction: column;
+        justify-content: center;
+        margin:auto;
+        text-align: center;
+        #explanation{
+            font-size: 2rem;
+            font-weight:normal ;
+        }
+    }
+}
