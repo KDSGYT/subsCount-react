@@ -6,7 +6,7 @@ const Nav = () =>{
         <nav>
             <ul>
                 <li><a href="https://github.com/KDSGYT/subsCount-react" target="_blank" rel="noopener noreferrer">Github</a></li>
-                <li><a href="https://www.kdsg.live">Author</a></li>
+                <li><a href="http://www.kdsg.live">Author</a></li>
             </ul>       
         </nav>
     )
