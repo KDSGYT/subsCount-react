@@ -44,7 +44,7 @@ class Window extends Component {
                 console.log(`channelId: ${data}`);
                 let url = `https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics%2CbrandingSettings&id=${data}&key=${api}`;
                 console.log("fetch function " + typeof this.fetchData)
-
+                
                 await this.fetchData(url)
             })
             .catch(err => console.log(err));
@@ -67,11 +67,10 @@ class Window extends Component {
                     const thumbnails = item.snippet.thumbnails;
                     const banner = item.brandingSettings.image;
                     const statistics = item.statistics;
-
                     this.setState({
                         title: item.snippet.title,
                         channelImg: thumbnails.medium.url,
-                        bannerUrl: banner.bannerMobileExtraHdImageUrl,
+                        bannerUrl: banner.bannerExternalUrl,
                         subscriberCount: this.shortNumber(statistics.subscriberCount),
                         viewCount: this.shortNumber(statistics.viewCount)
                     })
