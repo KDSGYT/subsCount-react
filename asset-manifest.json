@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/subsCount-react/static/css/main.11c4867b.chunk.css",
-    "main.js": "/subsCount-react/static/js/main.7d6601e8.chunk.js",
-    "main.js.map": "/subsCount-react/static/js/main.7d6601e8.chunk.js.map",
+    "main.js": "/subsCount-react/static/js/main.93db8c76.chunk.js",
+    "main.js.map": "/subsCount-react/static/js/main.93db8c76.chunk.js.map",
     "runtime-main.js": "/subsCount-react/static/js/runtime-main.2d7fcfab.js",
     "runtime-main.js.map": "/subsCount-react/static/js/runtime-main.2d7fcfab.js.map",
     "static/js/2.f75b49eb.chunk.js": "/subsCount-react/static/js/2.f75b49eb.chunk.js",
     "static/js/2.f75b49eb.chunk.js.map": "/subsCount-react/static/js/2.f75b49eb.chunk.js.map",
     "index.html": "/subsCount-react/index.html",
-    "precache-manifest.909b7071f6f9b5129f2d4c2831ef770d.js": "/subsCount-react/precache-manifest.909b7071f6f9b5129f2d4c2831ef770d.js",
+    "precache-manifest.086c9e01d032e02706953fa858e4af1d.js": "/subsCount-react/precache-manifest.086c9e01d032e02706953fa858e4af1d.js",
     "service-worker.js": "/subsCount-react/service-worker.js",
     "static/css/main.11c4867b.chunk.css.map": "/subsCount-react/static/css/main.11c4867b.chunk.css.map",
     "static/js/2.f75b49eb.chunk.js.LICENSE.txt": "/subsCount-react/static/js/2.f75b49eb.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2d7fcfab.js",
     "static/js/2.f75b49eb.chunk.js",
     "static/css/main.11c4867b.chunk.css",
-    "static/js/main.7d6601e8.chunk.js"
+    "static/js/main.93db8c76.chunk.js"
   ]
 }
